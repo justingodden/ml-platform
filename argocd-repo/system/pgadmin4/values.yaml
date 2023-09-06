@@ -11,5 +11,5 @@ persistentVolume:
   enabled: false
 
 env:
-  email: admin
+  email: email@email.com
   password: password
