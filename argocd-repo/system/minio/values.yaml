@@ -7,3 +7,6 @@ apiIngress:
   enabled: true
   ingressClassName: nginx
   hostname: minio-api.localhost
+
+auth:
+  rootPassword: password
