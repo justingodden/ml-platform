@@ -1,0 +1,15 @@
+ingress:
+  enabled: true
+  ingressClassName: nginx
+  hosts:
+    - host: pgadmin4.localhost
+      paths:
+        - path: /
+          pathType: Prefix
+
+persistentVolume:
+  enabled: false
+
+env:
+  email: email@email.com
+  password: password

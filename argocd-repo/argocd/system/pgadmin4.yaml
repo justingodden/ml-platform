@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: pgadmin4
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  sources:
+    - repoURL: https://helm.runix.net
+      chart: pgadmin4
+      targetRevision: "*"
+      helm:
+        releaseName: pgadmin4
+        valueFiles:
+          - $values/argocd-repo/system/pgadmin4/values.yaml
+    - repoURL: https://github.com/justingodden/ml-platform.git
+      ref: values
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: postgresql
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true
