@@ -8,7 +8,7 @@ apiIngress:
   ingressClassName: nginx
   hostname: minio-api.localhost
   annotations:
-    nginx.org/client-max-body-size: "50m"
+    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
 
 auth:
   rootPassword: password
