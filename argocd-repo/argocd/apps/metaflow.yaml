@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: metaflow
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  sources:
+    - repoURL: https://github.com/outerbounds/metaflow-tools.git
+      path: k8s/helm/metaflow
+      helm:
+        releaseName: metaflow
+        valueFiles:
+          - $values/argocd-repo/apps/metaflow/values.yaml
+    - repoURL: https://github.com/justingodden/ml-platform.git
+      ref: values
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: metaflow
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      prune: true
+      selfHeal: true
