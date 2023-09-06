@@ -7,7 +7,7 @@ apiIngress:
   enabled: true
   ingressClassName: nginx
   hostname: minio-api.localhost
-  annotation:
+  annotations:
     nginx.org/client-max-body-size: "50m"
 
 auth:
