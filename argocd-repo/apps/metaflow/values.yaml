@@ -38,8 +38,8 @@ metaflow-ui:
   envFrom:
     - secretRef:
         name: minio-secret
-  METAFLOW_DATASTORE_SYSROOT_S3: ""
-  METAFLOW_S3_ENDPOINT_URL: ""
+  METAFLOW_DATASTORE_SYSROOT_S3: s3://metaflow/metaflow
+  METAFLOW_S3_ENDPOINT_URL: minio.minio.svc.cluster.local:9000
 
 postgresql:
   enabled: false
