@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: postgresql
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  sources:
+    - repoURL: https://charts.bitnami.com/bitnami
+      chart: postgresql
+      targetRevision: "*"
+      helm:
+        releaseName: postgresql
+        valueFiles:
+          - $values/argocd-repo/system/postgresql/values.yaml
+    - repoURL: https://github.com/justingodden/ml-platform.git
+      ref: values
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: postgresql
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+    automated:
+      selfHeal: true
+      prune: true

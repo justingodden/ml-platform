@@ -1,0 +1,8 @@
+auth:
+  postgresPassword: password
+primary:
+  initdb:
+    scripts:
+      init.sql: |
+        CREATE DATABASE metaflow;
+        CREATE DATABASE mlflow;
