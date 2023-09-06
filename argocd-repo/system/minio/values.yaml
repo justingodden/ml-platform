@@ -1,0 +1,9 @@
+ingress:
+  enabled: true
+  ingressClassName: nginx
+  hostname: minio.localhost
+
+apiIngress:
+  enabled: true
+  ingressClassName: nginx
+  hostname: minio-api.localhost

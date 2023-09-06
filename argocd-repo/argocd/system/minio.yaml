@@ -7,19 +7,16 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
-  source:
-    repoURL: https://charts.bitnami.com/bitnami
-    chart: minio
-    targetRevision: "*"
-    helm:
-      releaseName: minio
-      parameters:
-        - name: ingress.enabled
-          value: "true"
-        - name: ingress.hostname
-          value: "minio.localhost"
-        - name: auth.rootPassword
-          value: password
+  sources:
+    - repoURL: https://charts.bitnami.com/bitnami
+      chart: minio
+      targetRevision: "*"
+      helm:
+        releaseName: minio
+        valueFiles:
+          - $values/argocd-repo/system/minio/values.yaml
+    - repoURL: https://github.com/justingodden/ml-platform.git
+      ref: values
   destination:
     server: "https://kubernetes.default.svc"
     namespace: minio
