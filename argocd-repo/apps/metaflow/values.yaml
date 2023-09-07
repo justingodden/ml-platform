@@ -16,9 +16,9 @@ metaflow-service:
     host: postgresql.postgresql.svc.cluster.local
     port: 5432
     name: metaflow
-  env:
-    - name: METAFLOW_S3_ENDPOINT_URL
-      value: http://minio.minio.svc.cluster.local:9000/
+  envFrom:
+    - secretRef:
+        name: metaflow-secret
 
 metaflow-ui:
   image:
@@ -40,13 +40,9 @@ metaflow-ui:
     host: postgresql.postgresql.svc.cluster.local
     port: 5432
     name: metaflow
-  env:
-    - name: METAFLOW_S3_ENDPOINT_URL
-      value: http://minio.minio.svc.cluster.local:9000/
   envFrom:
     - secretRef:
-        name: minio-secret
-  METAFLOW_DATASTORE_SYSROOT_S3: s3://metaflow/metaflow
+        name: metaflow-secret
 
 postgresql:
   enabled: false
