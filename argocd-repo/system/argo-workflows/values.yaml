@@ -11,9 +11,9 @@ workflow:
   serviceAccount:
     create: true
 
-  controller:
-    workflowNamespaces:
-      - metaflow
+controller:
+  workflowNamespaces:
+    - metaflow
 
 artifactRepository:
   s3:
