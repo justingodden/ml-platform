@@ -1,6 +1,12 @@
 server:
   extraArgs: ["--auth-mode=server"]
 
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    hosts:
+      - argo.localhost
+
 workflow:
   serviceAccount:
     create: true
