@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: mlflow
   annotations:
-    nginx.ingress.kubernetes.io/proxy-body-size: "5tb"
+    nginx.ingress.kubernetes.io/proxy-body-size: "500m"
 spec:
   ingressClassName: nginx
   rules:
@@ -11,7 +11,7 @@ spec:
       http:
         paths:
           - path: /
-            pathType: Prefix
+            pathType: Exact
             backend:
               service:
                 name: mlflow
