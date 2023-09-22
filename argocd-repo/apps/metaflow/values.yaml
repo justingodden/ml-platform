@@ -25,6 +25,12 @@ metaflow-ui:
     image:
       name: netflixoss/metaflow_metadata_service
       tag: "v2.4.3"
+    metadatadb:
+      user: postgres
+      password: password
+      host: postgresql.postgresql.svc.cluster.local
+      port: 5432
+      name: metaflow
     envFrom:
       - secretRef:
           name: metaflow-secret
@@ -39,7 +45,7 @@ metaflow-ui:
     image:
       name: public.ecr.aws/outerbounds/metaflow_ui
       tag: "1.3.5-28-ge1cafd7-obp"
-    metaflowUIBackendURL: "http://localhost:8083/api/"
+    # metaflowUIBackendURL: "http://localhost:8083/api/"
 
   ingress:
     enabled: true
