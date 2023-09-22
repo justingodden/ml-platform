@@ -12,3 +12,5 @@ apiIngress:
 
 auth:
   rootPassword: password
+
+defaultBuckets: "metaflow,mlflow"
