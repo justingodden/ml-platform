@@ -11,6 +11,10 @@ workflow:
   serviceAccount:
     create: true
 
+  controller:
+    workflowNamespaces:
+      - metaflow
+
 artifactRepository:
   s3:
     accessKeySecret:
