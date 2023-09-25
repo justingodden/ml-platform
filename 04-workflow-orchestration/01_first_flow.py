@@ -1,7 +1,7 @@
 from metaflow import FlowSpec, step
 
 
-class MinimumFlow(FlowSpec):
+class FirstFlow(FlowSpec):
     @step
     def start(self):
         self.next(self.end)
@@ -12,4 +12,4 @@ class MinimumFlow(FlowSpec):
 
 
 if __name__ == "__main__":
-    MinimumFlow()
+    FirstFlow()

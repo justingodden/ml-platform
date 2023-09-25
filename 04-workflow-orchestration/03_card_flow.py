@@ -1,7 +1,7 @@
 from metaflow import FlowSpec, step, card
 
 
-class DecoratorFlow(FlowSpec):
+class CardFlow(FlowSpec):
     @step
     def start(self):
         self.next(self.my_decorated_func)
@@ -18,4 +18,4 @@ class DecoratorFlow(FlowSpec):
 
 
 if __name__ == "__main__":
-    DecoratorFlow()
+    CardFlow()
