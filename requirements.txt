@@ -1,0 +1,10 @@
+mlflow
+metaflow
+boto3
+psycopg2-binary
+kubernetes
+pylint
+ipykernel
+scikit-learn
+pandas
+matplotlib
